@@ -1,2 +1,3 @@
 # conan-google-benchmark
-Conan.io package for Google test library
+
+Conan package for the [Google Benchmark](https://github.com/google/benchmark) library.

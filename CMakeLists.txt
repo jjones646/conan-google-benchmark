@@ -1,0 +1,6 @@
+project( ConanGoogleBenchmark )
+cmake_minimum_required( VERSION 3.0 )
+include( conanbuildinfo.cmake )
+conan_basic_setup( TARGETS )
+set( _ignore_me  ${CONAN_EXPORTED} )
+add_subdirectory( benchmark )
