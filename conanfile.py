@@ -7,7 +7,7 @@ class GoogleBenchmarkConan(ConanFile):
     version = '1.1.0'
     description = 'A microbenchmark support library.'
     url = 'http://github.com/jjones646/conan-google-benchmark'
-    license = 'https://github.com/google/benchmark/blob/v{!s}/LICENSE'.format(version)
+    license = 'https://github.com/google/benchmark/blob/v1.1.0/LICENSE'
     settings = 'arch', 'build_type', 'compiler', 'os'
     options =   { 'enable_lto': [True, False] }
     default_options = 'enable_lto=False'

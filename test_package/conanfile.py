@@ -1,7 +1,7 @@
 from conans import ConanFile, CMake
 import os
 
-username = os.getenv('CONAN_USERNAME', 'keysight')
+username = os.getenv('CONAN_USERNAME', 'jjones646')
 os.environ['CONAN_USERNAME'] = username
 channel = os.getenv('CONAN_CHANNEL', 'testing')
 os.environ['CONAN_CHANNEL'] = channel
