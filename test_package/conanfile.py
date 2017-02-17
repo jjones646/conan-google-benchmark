@@ -27,6 +27,7 @@ class BenchmarkConanPackageTest(ConanFile):
     def imports(self):
         self.copy(pattern='*', dst='bin', src='bin')
         self.copy(pattern='*.dylib', dst='bin', src='lib')
+        self.copy(pattern='*.pdb', dst='bin', src='lib')
 
     def test(self):
         self.run(os.sep.join(['.', 'bin', 'BenchmarkPackageTest']))

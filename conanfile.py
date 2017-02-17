@@ -1,6 +1,6 @@
 from conans import ConanFile, CMake, tools
 from conans.errors import ConanException
-import os, shutil
+import os, shutil, glob
 
 class GoogleBenchmarkConan(ConanFile):
     name = 'benchmark'
@@ -12,7 +12,7 @@ class GoogleBenchmarkConan(ConanFile):
     options =   { 'enable_lto': [True, False] }
     default_options = 'enable_lto=False'
     exports_sources = 'CMakeLists.txt', 'rt-lib.patch'
-    generators = 'cmake', 'xcode'
+    generators = 'cmake'
     build_policy = 'missing'
 
     def source(self):
@@ -29,7 +29,7 @@ class GoogleBenchmarkConan(ConanFile):
         gen_extra_args = list()
         gen_extra_args += ['-DBUILD_SHARED_LIBS=OFF']   # only support static library with conan
         gen_extra_args += ['-DCMAKE_INSTALL_PREFIX:PATH="{!s}"'.format(self.conanfile_directory)]
-        gen_extra_args += ['-DBENCHMARK_ENABLE_TESTING=OFF']   # never build the tests for packaging
+        gen_extra_args += ['-DBENCHMARK_ENABLE_TESTING=ON']   # always build the tests for packaging
         gen_extra_args += ['-DBENCHMARK_ENABLE_LTO={!s}'.format('ON' if self.options.enable_lto else 'OFF')]
         try:
             gen_extra_args += ['-DBENCHMARK_USE_LIBCXX={!s}'.format('ON' if (self.settings.compiler.libcxx == 'libc++') else 'OFF')]
@@ -41,11 +41,13 @@ class GoogleBenchmarkConan(ConanFile):
         build_extra_args += ['-- -j -k'] if self.settings.compiler != 'Visual Studio' else ['']
         build_extra_args = ' '.join(build_extra_args)
         self.run('cmake --build . --target install {!s} {!s}'.format(cmake.build_config, build_extra_args))
+        for f in glob.glob(os.path.join('bin', '*')):
+            shutil.copy2(f, os.path.join('benchmark', 'test'))
+        self.run('ctest -C {!s}'.format(self.settings.build_type))
 
     def package(self):
         self.copy(pattern='*.h', dst='include', src='include')
         self.copy(pattern='*{!s}*'.format(self.name), dst='lib', src='lib', keep_path=False)
-        self.copy(pattern='*{!s}.pdb'.format(self.name), dst='bin', src='.', keep_path=False)
         self.copy(pattern='conan_run.log', dst='.', keep_path=False)
 
     def package_info(self):

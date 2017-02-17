@@ -17,7 +17,7 @@ def get_builds_with_options(builder):
 
 if __name__ == '__main__':
     builder = ConanMultiPackager(
-        gcc_versions=['4.8', '4.9', '5.2', '5.3', '5.4', '6.2'],
+        gcc_versions=['4.9', '5.2', '5.3', '5.4', '6.2'],
         apple_clang_versions=['8.0'],
         visual_versions=['14'],
         archs=['x86_64', 'x86'],
