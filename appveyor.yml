@@ -1,0 +1,27 @@
+build: false
+version: 1.1.0-{build}
+environment:
+    PYTHON: "C:\\Python27"
+    PYTHON_VERSION: "2.7.8"
+    PYTHON_ARCH: "32"
+
+    CONAN_UPLOAD: 1
+    CONAN_REFERENCE: "benchmark/1.1.0"
+    CONAN_USERNAME: "jjones646"
+    CONAN_CHANNEL: "testing"
+    CONAN_TOTAL_PAGES: 4
+    CONAN_STABLE_BRANCH_PATTERN: "release/*"
+
+    matrix:
+        - CONAN_CURRENT_PAGE: 1
+        - CONAN_CURRENT_PAGE: 2
+        - CONAN_CURRENT_PAGE: 3
+        - CONAN_CURRENT_PAGE: 4
+
+install:
+  - set PATH=%PATH%;%PYTHON%/Scripts/
+  - pip.exe install conan_package_tools  # this installs conan too
+  - conan user  # this creates the conan data directory
+
+test_script:
+  - python build.py
