@@ -5,7 +5,7 @@ environment:
     PYTHON_VERSION: "2.7.8"
     PYTHON_ARCH: "32"
 
-    CONAN_UPLOAD: 1
+    CONAN_UPLOAD: 0
     CONAN_REFERENCE: "benchmark/1.2.0"
     CONAN_USERNAME: "jjones646"
     CONAN_CHANNEL: "testing"
