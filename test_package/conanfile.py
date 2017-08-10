@@ -15,7 +15,7 @@ class BenchmarkConanPackageTest(ConanFile):
                     'arch': None,
                     'build_type': ['Release', 'Debug']
                 }
-    requires = 'benchmark/1.1.0@{!s}/{!s}'.format(username, channel)
+    requires = 'benchmark/1.2.0@{!s}/{!s}'.format(username, channel)
     generators = 'cmake'
     build_policy = 'missing'
 

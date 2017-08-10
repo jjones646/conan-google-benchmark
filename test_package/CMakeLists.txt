@@ -14,8 +14,6 @@ set( CMAKE_CXX_EXTENSIONS  OFF )
 
 include( "${CMAKE_BINARY_DIR}/conanbuildinfo.cmake" )
 conan_basic_setup( TARGETS )
-# supress cmake warnings about unused variables that conan passes in
-set( _ignore_me  ${CONAN_EXPORTED} )
 
 add_executable( BenchmarkPackageTest
     main.cpp
