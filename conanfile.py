@@ -7,10 +7,10 @@ from conans.errors import ConanException
 
 class GoogleBenchmarkConan(ConanFile):
     name = 'benchmark'
-    version = '1.2.0'
+    version = '1.3.0'
     description = 'A microbenchmark support library.'
     url = 'http://github.com/jjones646/conan-google-benchmark'
-    license = 'https://github.com/google/benchmark/blob/v1.2.0/LICENSE'
+    license = 'https://github.com/google/benchmark/blob/v1.3.0/LICENSE'
     settings = 'arch', 'build_type', 'compiler', 'os'
     options = {
         'enable_lto': [True, False],
@@ -24,7 +24,7 @@ class GoogleBenchmarkConan(ConanFile):
     def source(self):
         archive_url = 'https://github.com/google/benchmark/archive/v{!s}.zip'.format(self.version)
         tools.download(archive_url, 'benchmark.zip')
-        tools.check_sha256('benchmark.zip', 'cc463b28cb3701a35c0855fbcefb75b29068443f1952b64dd5f4f669272e95ea')
+        tools.check_sha256('benchmark.zip', '51c2d2d35491aea83aa6121afc4a1fd9262fbd5ad679eb5e03c9fa481e42571e')
         tools.unzip('benchmark.zip')
         os.unlink('benchmark.zip')
         shutil.move('benchmark-{!s}'.format(self.version), 'benchmark')

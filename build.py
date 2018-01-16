@@ -26,7 +26,7 @@ if __name__ == '__main__':
         archs=['x86_64', 'x86'],
         username=username,
         channel=channel,
-        reference='benchmark/1.2.0',
+        reference='benchmark/1.3.0',
     )
     builder.add_common_builds(pure_c=False)
     builder.builds = get_builds_with_options(builder)
