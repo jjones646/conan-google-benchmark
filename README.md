@@ -6,12 +6,10 @@ Conan package for the [Google Benchmark](https://github.com/google/benchmark) li
 [![Build status](https://ci.appveyor.com/api/projects/status/g0thoc0a3rvb7134?svg=true)](https://ci.appveyor.com/project/jjones646/conan-google-benchmark)
 
 ## Prerequisites
-- [conan](https://github.com/conan-io/conan)
+- [conan](https://github.com/conan-io/conan) (1.0 or higher)
 - [conan-package-tools](https://github.com/conan-io/conan-package-tools)
 
-## Building Packages
-To build packages for your system, use the `build.py` python script.
-
+## Build and Create the Benchmark Package
 ```
-python build.py
+conan create . <username>/<channel> -tf test_package/
 ```

@@ -7,7 +7,7 @@ from conans.errors import ConanException
 
 class GoogleBenchmarkConan(ConanFile):
     name = 'benchmark'
-    version = '1.3.0'
+    version = '1.4.0'
     description = 'A microbenchmark support library.'
     url = 'http://github.com/jjones646/conan-google-benchmark'
     license = 'https://github.com/google/benchmark/blob/v1.3.0/LICENSE'
@@ -24,7 +24,7 @@ class GoogleBenchmarkConan(ConanFile):
     def source(self):
         archive_url = 'https://github.com/google/benchmark/archive/v{!s}.zip'.format(self.version)
         tools.download(archive_url, 'benchmark.zip')
-        tools.check_sha256('benchmark.zip', '51c2d2d35491aea83aa6121afc4a1fd9262fbd5ad679eb5e03c9fa481e42571e')
+        tools.check_sha256('benchmark.zip', '7f5f3608c9228fa023151a4b54e91f4ada4b7b49c26facede6c5b8b83ddbedad')
         tools.unzip('benchmark.zip')
         os.unlink('benchmark.zip')
         shutil.move('benchmark-{!s}'.format(self.version), 'benchmark')
